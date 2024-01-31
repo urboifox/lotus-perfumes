@@ -3,5 +3,5 @@ type PerfumePageProps = {
 };
 export default function PerfumePage({ params }: PerfumePageProps) {
   const { perfumeId } = params;
-  return <div>perfume</div>;
+  return <div>{perfumeId}</div>;
 }

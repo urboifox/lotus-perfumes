@@ -4,8 +4,6 @@ import { getAllPerfumes } from "@/lib/functions/getAllPerfumes";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
 
-export const revalidate = 60;
-
 export default async function Perfumes() {
   const perfumesData = await getAllPerfumes();
   const perfumes: PerfumeType[] = perfumesData.data.perfumes;
@@ -29,4 +27,12 @@ export default async function Perfumes() {
       </div>
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  const perfumesData = await getAllPerfumes();
+
+  return perfumesData.data.perfumes.map((perfume: PerfumeType) => ({
+    perfumeId: perfume._id,
+  }));
 }

@@ -1,15 +1,16 @@
 import LotusLogo from "@/components/LotusLogo";
 import NavLink from "@/components/NavLink";
-import { HOST } from "@/utils/constants";
 import { Badge, Button } from "@nextui-org/react";
 import Link from "next/link";
 import UserDropdown from "./UserDropdown";
 import { BiCart } from "react-icons/bi";
 import { checkAuth } from "@/utils/checkAuth";
 
-export default async function HomeNav() {
-  const user = await checkAuth();
-
+export default async function HomeNav({
+  user,
+}: {
+  user: { id: string; role: string } | null;
+}) {
   return (
     <header className="sticky top-0 mb-10 container mx-auto font-medium px-3 py-5 flex items-center justify-between">
       <Link href={"/home"}>
@@ -55,4 +56,14 @@ export default async function HomeNav() {
       )}
     </header>
   );
+}
+
+export async function getServerSideProps() {
+  const user = await checkAuth();
+
+  return {
+    props: {
+      user,
+    },
+  };
 }

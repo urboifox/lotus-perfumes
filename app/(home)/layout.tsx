@@ -4,7 +4,7 @@ import HomeNav from "./_components/HomeNav";
 export default function HomeLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <HomeNav />
+      <HomeNav user={null} />
       {children}
     </>
   );

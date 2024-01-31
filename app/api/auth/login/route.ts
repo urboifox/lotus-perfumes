@@ -4,7 +4,6 @@ import signJWT from "@/utils/signJWT";
 import bcrypt from "bcrypt";
 import { limiter } from "@/app/api/config/limiter";
 import { httpStatus, httpStatusText } from "@/utils/httpStatus";
-import { NextRequest } from "next/server";
 
 export async function POST(req: Request) {
   const remainingTokens = await limiter.removeTokens(1);
