@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import isRouteInside from "@/utils/isRouteInside";
 import { adminRoutes, needsLoginRoutes, needsLogoutRoutes } from "@/routes";
-import { checkAuthentication } from "./utils/checkAuthentication";
+import { checkAuthMiddleware } from "./utils/checkAuthMiddleware";
 
 export async function middleware(req: NextRequest) {
   const needsLogin = isRouteInside(req, needsLoginRoutes);
@@ -9,7 +9,7 @@ export async function middleware(req: NextRequest) {
   const needsAdmin = isRouteInside(req, adminRoutes);
 
   let { loggedIn, role }: { loggedIn: boolean; role: string } =
-    await checkAuthentication(req);
+    await checkAuthMiddleware(req);
   const isAdmin = role === "admin" ? true : false;
 
   if (req.nextUrl.pathname === "/") {

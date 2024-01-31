@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import verifyJWT from "./verifyJWT";
 import * as jose from "jose";
-export async function checkAuthentication(request: NextRequest) {
+export async function checkAuthMiddleware(request: NextRequest) {
   const token = request.cookies.get("token");
   let loggedIn = false;
   let role = "user";

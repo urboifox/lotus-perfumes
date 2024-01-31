@@ -28,11 +28,3 @@ export default async function Perfumes() {
     </main>
   );
 }
-
-export async function generateStaticParams() {
-  const perfumesData = await getAllPerfumes();
-
-  return perfumesData.data.perfumes.map((perfume: PerfumeType) => ({
-    perfumeId: perfume._id,
-  }));
-}
