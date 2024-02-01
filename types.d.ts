@@ -1,3 +1,8 @@
+type TokenData = {
+  id: string;
+  role: "user" | "admin" | "superadmin";
+} | null;
+
 type UserType = {
   _id?: string;
   name: string;

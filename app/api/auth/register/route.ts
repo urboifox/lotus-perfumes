@@ -54,6 +54,7 @@ export async function POST(req: Request) {
 
     return Response.json(
       {
+        // remove token from response
         data: { user: { name, email, phone, address }, token },
         status: httpStatusText.SUCCESS,
       },

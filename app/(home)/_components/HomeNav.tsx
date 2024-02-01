@@ -1,12 +1,9 @@
 import LotusLogo from "@/components/LotusLogo";
 import NavLink from "@/components/NavLink";
 import Link from "next/link";
-import { checkAuth } from "@/utils/checkAuth";
 import NavbarUserPart from "./NavbarUserPart";
 
 export default async function HomeNav() {
-  const user = await checkAuth();
-
   return (
     <header className="sticky top-0 mb-10 container mx-auto font-medium px-3 py-5 flex items-center justify-between">
       <Link href={"/home"}>
@@ -23,7 +20,7 @@ export default async function HomeNav() {
         </NavLink>
       </nav>
 
-      <NavbarUserPart user={user} />
+      <NavbarUserPart />
     </header>
   );
 }

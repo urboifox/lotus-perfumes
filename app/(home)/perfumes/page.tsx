@@ -3,6 +3,11 @@ import styles from "./perfumes.module.css";
 import { getAllPerfumes } from "@/lib/functions/getAllPerfumes";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lotus | Perfumes",
+};
 
 export default async function Perfumes() {
   const perfumesData = await getAllPerfumes();

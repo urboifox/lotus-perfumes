@@ -74,6 +74,7 @@ export async function POST(req: Request) {
           favourites: user.favourites,
           role: user.role,
         },
+        // remove token from response
         token,
       },
     },
