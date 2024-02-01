@@ -3,7 +3,7 @@ import { Button, Skeleton } from "@nextui-org/react";
 export default function NavSkeleton() {
   return (
     <div className="flex items-center gap-3">
-      <Skeleton className="rounded-lg">
+      <Skeleton className="hidden md:flex rounded-lg">
         <Button variant="bordered" color="primary">
           Login
         </Button>

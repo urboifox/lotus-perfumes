@@ -27,7 +27,9 @@ export default async function Perfumes() {
       </section>
       <div className="w-full flex items-center justify-center">
         <Link href={"/perfumes/create"} className="mx-auto mt-10">
-          <Button>Create Your Own!</Button>
+          <Button color="primary" className="text-background" variant="shadow">
+            Create Your Own!
+          </Button>
         </Link>
       </div>
     </main>

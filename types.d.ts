@@ -25,6 +25,14 @@ type ComponentType = {
   description: string;
 };
 
+type OrderType = {
+  perfume: PerfumeType;
+  user: UserType;
+  date: Date;
+  quantity: number;
+  status: "pending" | "delivered" | "canceled";
+};
+
 type LoginInputs = {
   email: string;
   password: string;

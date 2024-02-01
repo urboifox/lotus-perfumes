@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
 
   let { loggedIn, role }: { loggedIn: boolean; role: string } =
     await checkAuthMiddleware(req);
-  const isAdmin = role === "admin" ? true : false;
+  const isAdmin = role === "user" ? false : true;
 
   if (req.nextUrl.pathname === "/") {
     return NextResponse.redirect(new URL("/home", req.url));

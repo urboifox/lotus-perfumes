@@ -1,5 +1,6 @@
 "use client";
 
+import { handleLogout } from "@/utils/handleLogout";
 import {
   Avatar,
   Dropdown,
@@ -16,12 +17,7 @@ type UserDropdownProps = {
 
 export default function UserDropdown({ user }: UserDropdownProps) {
   const router = useRouter();
-  async function handleLogout() {
-    await fetch("/api/auth/logout", {
-      cache: "no-store",
-    });
-    router.refresh();
-  }
+
   return (
     <Dropdown>
       <DropdownTrigger className="cursor-pointer">
@@ -29,14 +25,21 @@ export default function UserDropdown({ user }: UserDropdownProps) {
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
         {user.role !== "user" ? (
-          <DropdownItem key="dashboard">Dashboard</DropdownItem>
+          <DropdownItem
+            key="dashboard"
+            as={Link}
+            className="text-foreground"
+            href={"/dashboard"}
+          >
+            Dashboard
+          </DropdownItem>
         ) : (
           <DropdownItem key="profile">Profile</DropdownItem>
         )}
         <DropdownItem
           as={Link}
           href="/"
-          onClick={handleLogout}
+          onClick={() => handleLogout(router)}
           key="logout"
           className="text-danger"
           color="danger"
